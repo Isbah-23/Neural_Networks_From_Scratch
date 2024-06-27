@@ -1,7 +1,6 @@
 import numpy as np
-import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.datasets import load_iris
 from sklearn.metrics import confusion_matrix, classification_report
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -74,15 +73,8 @@ class Optimizer_SGD():
         
 
 # Create dataset
-iris_dataset = pd.read_csv('Iris.csv')
-iris_dataset = iris_dataset[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm','Species']]
-X = iris_dataset.drop(columns=['Species'])
-y = iris_dataset['Species']
-
-# over here i shall convert my labels to sparse vector to prevent my custom implementation from dying
-label_encoder = LabelEncoder()
-y = np.array(label_encoder.fit_transform(y)) # perfecto
-
+iris = load_iris()
+X, y = iris.data, iris.target
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 d1 = Layer(4,32)

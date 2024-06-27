@@ -1,21 +1,17 @@
 from components import Layer, ReLU, Activation_Softmax_Loss_Categorical_CrossEntropy, Optimizer_SGD
 from matrix import Matrix
-import pandas as pd
-from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
 
 with open("report.txt","w") as outfile:
     outfile.write('Takes eons to run without numpy so i\'ll record my results here\n')
 
 # Create dataset
-iris_dataset = pd.read_csv('Iris.csv')
-iris_dataset = iris_dataset[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm','Species']]
-X = iris_dataset.drop(columns=['Species'])
-y = iris_dataset['Species']
+iris = load_iris()
+X,y = iris.data, iris.target
 
 # over here i shall convert my labels to sparse vector to prevent my custom implementation from dying
-label_encoder = LabelEncoder()
-y = list(label_encoder.fit_transform(y)) # perfecto
+# y = list(y) # perfecto
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -27,8 +23,8 @@ o = Optimizer_SGD(learning_rate=0.0001)
 
 curr_acc = 0
 curr_params = []
-X_train = Matrix(X_train.values.tolist())
-X_test = Matrix(X_test.values.tolist())
+X_train = Matrix(X_train.tolist())
+X_test = Matrix(X_test.tolist())
 
 for epoch in range(10000):
     d1.forward(X_train)

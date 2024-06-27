@@ -1,0 +1,12 @@
+Takes eons to run without numpy so i'll record my results here
+epoch: 0, acc: 0.425, loss: 5.708, lr: 0.0001
+epoch: 1000, acc: 0.683, loss: 0.561, lr: 0.0001
+epoch: 2000, acc: 0.742, loss: 0.486, lr: 0.0001
+epoch: 3000, acc: 0.742, loss: 0.431, lr: 0.0001
+epoch: 4000, acc: 0.783, loss: 0.388, lr: 0.0001
+epoch: 5000, acc: 0.833, loss: 0.354, lr: 0.0001
+epoch: 6000, acc: 0.842, loss: 0.326, lr: 0.0001
+epoch: 7000, acc: 0.858, loss: 0.303, lr: 0.0001
+epoch: 8000, acc: 0.883, loss: 0.284, lr: 0.0001
+epoch: 9000, acc: 0.892, loss: 0.268, lr: 0.0001
+Testing; acc: 0.833, loss: 0.309, lr: 0.0001
